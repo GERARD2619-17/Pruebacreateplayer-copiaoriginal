@@ -1,0 +1,11 @@
+POST http://localhost:1337/api/auth/local/register
+Content-Type: application/json
+
+{
+    
+    "username": "Gerard Zelaya",
+    "email": "gerardraf@gmail.com",
+    "password": "659845623741"
+
+    
+}

@@ -1,0 +1,11 @@
+POST http://localhost:1337/api/players
+Content-Type: application/json
+
+{
+    "data":{
+        "name": "Edgardo Flores",
+        "age": "16",
+        "height": "1.70",
+        "position": "Delantero"
+    }
+}

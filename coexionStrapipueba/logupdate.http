@@ -1,0 +1,11 @@
+PUT http://localhost:1337/api/users/1
+Content-Type: application/json
+
+{
+    
+    "username": "Gerard Zelflo",
+    "email": "gerardraf@gmail.com",
+    "password": "659845623741"
+
+    
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Player</title>
+    <link rel="stylesheet" type="text/css" href="/MenuDashboard/css/stylesdashboard.css"/>
+  </head>
+  <body>
+    <div class="dasboard">
+      
+    </div>
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="icon"><ion-icon name="logo-apple"></ion-icon></span>
+              <span class="title">Brand Name</span>
+            </a>
+          </li>
+  
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><ion-icon name="home-outline"></ion-icon
+              ></span>
+              <span class="title">Dashboard</span>
+            </a>
+          </li>
+  
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><ion-icon name="person-outline"></ion-icon
+              ></span>
+              <span class="title">Jugadoress</span>
+            </a>
+  
+            
+          </li>
+  
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><ion-icon name="chatbubbles-outline"></ion-icon
+              ></span>
+              <span class="title">Message</span>
+            </a>
+          </li>
+  
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><ion-icon name="help-outline"></ion-icon
+              ></span>
+              <span class="title">Help</span>
+            </a>
+          </li>
+  
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><ion-icon name="settings-outline"></ion-icon
+              ></span>
+              <span class="title">Setting</span>
+            </a>
+          </li>
+  
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><ion-icon name="lock-closed-outline"></ion-icon
+              ></span>
+              <span class="title">Password</span>
+            </a>
+          </li>
+  
+          <li>
+            <a href="#">
+              <span class="icon"
+                ><ion-icon name="log-out-outline"></ion-icon
+              ></span>
+              <span class="title">Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- main -->
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon name="menu-outline"></ion-icon>
+          </div>
+          <!-- search -->
+          <div class="search">
+            <label>
+              <input type="text" placeholder="Search here" />
+              <ion-icon name="search-outline"></ion-icon>
+            </label>
+          </div>
+          <!-- userImg -->
+          <div class="user">
+            <img src="/MenuDashboard/imgDashboard/user.jpg" />
+          </div>
+        </div>
+              <!-- Formulario de creación de jugador -->
+        <div class="body-players">
+          <div class="form-container">
+            <form id="playerForm">
+              <label for="id">Id:</label>
+              <input type="text" id="id" name="id" required>
+  
+              <label for="name">Nombre:</label>
+              <input type="text" id="name" name="name" required>
+          
+              <label for="age">Edad:</label>
+              <input type="number" id="age" name="age" required>
+          
+              <label for="height">Altura:</label>
+              <input type="number" id="height" name="height" required>
+          
+              <label for="gender">Género:</label>
+              <select id="gender" name="gender" required>
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+              </select>
+          
+              <label for="position">Posición:</label>
+              <select id="position" name="position"  required>
+                <option value="" selected disabled>Elige una posición</option>
+                <option value="delantero">Delantero</option>
+                <option value="portero">Portero</option>
+                <option value="defensa">Defensa</option>
+                <option value="medio_campo">Medio Campo</option>
+              </select>
+  
+             <!-- <label for="image">Imagen de Perfil:</label>
+              <input type="file" id="image" name="image">-->
+          
+              <button type="button" onclick="deletePlayer()">Eliminar</button>
+            </form>
+            <!-- Modal para mostrar el mensaje de éxito -->
+            <div id="successModal" class="modal">
+              <div class="modal-content">
+                <span class="close" onclick="closeSuccessModal()">&times;</span>
+                <p id="successMessage"></p>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+    <script>
+      //MenuToogle
+      let toggle = document.querySelector(".toggle");
+      let navigation = document.querySelector(".navigation");
+      let main = document.querySelector(".main");
+  
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      };
+      //agregar el hovered en la clase de selecioonar el listado de item
+      let list = document.querySelectorAll(".navigation li");
+      function activeLink() {
+        list.forEach((item) => item.classList.remove("hovered"));
+        this.classList.add("hovered");
+      }
+      list.forEach((item) => item.addEventListener("mouseover", activeLink));
+    </script>
+  
+  
+      
+      <script src="/MenuDashboard/js/TablePlayer/DeletePlayer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+POST http://localhost:1337/api/auth/local
+Content-Type: application/json
+
+{
+    "identifier": "grzf2697@gmail.com",
+    "password": "Grzf972608"
+}
+

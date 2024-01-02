@@ -1,0 +1,67 @@
+
+body {
+    background-color: #0d345b;
+  }
+
+  #container {
+    margin-top: 50px;
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    color: #02152a;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  label {
+    margin-top: 10px;
+    color: #495057;
+  }
+
+  input {
+    padding: 8px;
+    margin-top: 5px;
+  }
+
+  button {
+    margin-top: 40px;
+  }
+
+  table {
+    margin-top: 20px;
+  }
+
+  th, td {
+    text-align: center;
+  }
+
+  .modal-header {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+
+  .modal-footer {
+    background-color: #f8f9fa;
+  }
+
+  #mensaje {
+    margin-top: 10px;
+  }
+
+  /* Estilos adicionales para hacer responsive */
+  @media (max-width: 767px) {
+    form {
+      flex-direction: column;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }

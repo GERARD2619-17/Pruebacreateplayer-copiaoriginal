@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Posiciones</title>
+         <!-- Incluir Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/styletablaposicion.css">
+
+  
+
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="jumbotron text-center bg-white">
+          <h2 class="display-4">Tabla de Posiciones</h2>
+        </div>
+      
+        <form class="form-inline" id="formularioPartidos">
+          <div class="form-row align-items-center">
+            <div class="col-auto">
+              <label class="mr-sm-2" for="equipo1">Equipo 1:</label>
+              <input type="text" class="form-control mb-2" id="equipo1" placeholder="Nombre del equipo 1">
+            </div>
+      
+            <div class="col-auto">
+              <label class="mr-sm-2" for="resultado1">Resultado 1:</label>
+              <input type="number" class="form-control mb-2" id="resultado1" placeholder="Goles equipo 1">
+            </div>
+      
+            <div class="col-auto">
+              <label class="mr-sm-2" for="equipo2">Equipo 2:</label>
+              <input type="text" class="form-control mb-2" id="equipo2" placeholder="Nombre del equipo 2">
+            </div>
+      
+            <div class="col-auto">
+              <label class="mr-sm-2" for="resultado2">Resultado 2:</label>
+              <input type="number" class="form-control mb-2" id="resultado2" placeholder="Goles equipo 2">
+            </div>
+      
+            <div class="col-auto">
+              <button type="button" class="btn btn-success mb-2" onclick="agregarPartido()">Agregar Partido</button>
+            </div>
+          </div>
+        </form>
+      
+        <div id="mensaje" class="alert d-none" role="alert"></div>
+      
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Equipo</th>
+              <th scope="col">Puntos</th>
+              <th scope="col">Diferencia de Goles</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Los datos de la tabla se llenarán dinámicamente aquí -->
+          </tbody>
+        </table>
+      
+        <!-- Modal para modificar resultados -->
+        <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="modalModificarLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalModificarLabel">Modificar Resultados</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <label for="nuevoResultado1">Nuevo Resultado Equipo 1:</label>
+                <input type="number" class="form-control" id="nuevoResultado1" placeholder="Nuevo Resultado Equipo 1">
+      
+                <label for="nuevoResultado2">Nuevo Resultado Equipo 2:</label>
+                <input type="number" class="form-control" id="nuevoResultado2" placeholder="Nuevo Resultado Equipo 2">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="modificarResultados()">Guardar Cambios</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Incluir Bootstrap JS y Popper.js -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+      <script src="js/script.js"></script>
+</body>
+</html>

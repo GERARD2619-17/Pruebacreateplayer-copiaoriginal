@@ -1,0 +1,11 @@
+PUT http://localhost:1337/api/empleados/1
+Content-Type: application/json
+
+{
+   "data": {
+                "Nombres": "Gerar",
+                "Apellidos": "Zelaya",
+                "Email": "grzf9708@gmail.com",
+                "Password": "rzf972608"
+   }
+}
