@@ -386,9 +386,9 @@ body {
             flex-direction: column;
         }
 
-        input {
-            width: 100%;
-            margin-bottom: 10px;
+    input {
+        width: 100%;
+        margin-bottom: 10px;
         }
     }
 }
@@ -852,11 +852,6 @@ tbody td.active {
         width: 50%;
     }
  
-    .table__body {
-        width: 90%;
-        max-height: calc(85% - 1.6rem);
-    }
- 
     .export__file .export__file-btn {
         display: inline-block;
         width: 3rem;
@@ -868,11 +863,6 @@ tbody td.active {
  @media only screen and (min-width: 1024px) {
     .table__header .input-group {
         width: 60%;
-    }
- 
-    .table__body {
-        width: 85%;
-        max-height: calc(80% - 1.6rem);
     }
  
     .export__file .export__file-btn {
