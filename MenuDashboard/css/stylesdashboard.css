@@ -344,8 +344,8 @@ body {
         white-space: nowrap;
     }
 }
-
-@media (max-width: 480px) {
+/* Estilos para pantallas medianas */
+@media only screen and (min-width: 768px) and (max-width: 1080px) {
     .cardBox {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -359,9 +359,44 @@ body {
     }
 
     .navigation {
-        width: 100%;
+       /* width: 100%;*/
         left: -100%;
-        z-index: 1000;
+       /* z-index: 1000;*/
+    }
+
+    .navigation.active {
+        width: 100%;
+        left: 0;
+    }
+
+    .toggle {
+        z-index: 10001;
+    }
+
+    .main.active .toggle {
+        position: fixed;
+        right: 0;
+        left: initial;
+        color: var(--white);
+    }   
+}
+@media only screen and (min-width: 480px) and (max-width: 768px ) {
+    .cardBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cardHeader h2 {
+        font-size: 20px;
+    }
+
+    .user {
+        min-width: 40px;
+    }
+
+    .navigation {
+        /*width: 100%;*/
+        left: -100%;
+       /* z-index: 1000;*/
     }
 
     .navigation.active {
@@ -385,13 +420,61 @@ body {
         form {
             flex-direction: column;
         }
-
-    input {
-        width: 100%;
-        margin-bottom: 10px;
+    
+        input {
+            width: 100%;
+            margin-bottom: 10px;
         }
     }
 }
+@media only screen and (min-width: 768px) and (max-width: 900px ) {
+    .cardBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .cardHeader h2 {
+        font-size: 20px;
+    }
+
+    .user {
+        min-width: 40px;
+    }
+
+    .navigation {
+        /*width: 100%;*/
+        left: -100%;
+       /* z-index: 1000;*/
+    }
+
+    .navigation.active {
+        width: 100%;
+        left: 0;
+    }
+
+    .toggle {
+        z-index: 10001;
+    }
+
+    .main.active .toggle {
+        position: fixed;
+        right: 0;
+        left: initial;
+        color: var(--white);
+    }
+
+    /* Estilos adicionales para hacer responsive tabla posiciones*/
+    @media (max-width: 767px) {
+        form {
+            flex-direction: column;
+        }
+    
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}
+
 
 /*fin de la parte resposiva de mi dashboard*/
 /*body players*/
@@ -528,7 +611,7 @@ input[type="submit"]:hover {
 /*inicio de la seccion de mi tabla lista de jugadores*/
 body-listplayer {
     min-height: 100vh;
-
+    background-color: #fff4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -537,21 +620,22 @@ body-listplayer {
 main.table {
     width: 75vw;
     height: 90vh;
-    background-color: #fff5;
+    background-color: #fff4;
     backdrop-filter: blur(7px);
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .8rem;
     margin: auto;
     overflow: hidden;
 }
-
+/*seccion del boton*/
 .table__header {
     width: 100%;
     height: 5%;
     background-color: #fff4;
     padding: .8rem 1rem;
-
-    display: flex;
+  
+    
+   display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -586,7 +670,7 @@ main.table {
 .table__header .input-group input {
     width: 100%;
     padding: 0 .5rem 0 .3rem;
-    background-color: transparent;
+    background-color: #fff4;
     border: none;
     outline: none;
 }
@@ -594,12 +678,10 @@ main.table {
 .table__body {
     width: 95%;
     max-height: calc(89% - 1.6rem);
-    background-color: #fffb;
-
+    background-color: #fff4;
     margin: .8rem auto;
     border-radius: .6rem;
-
-    overflow: auto;
+    /*overflow: auto;*/
     overflow: overlay;
 }
 
@@ -637,10 +719,12 @@ td {
     border-collapse: collapse;
     padding: 1rem;
     text-align: left;
+    table-layout: auto; /* La tabla ajustará automáticamente su ancho según el contenido */
 }
 
 thead th {
     position: sticky;
+    table-layout: auto; /* La tabla ajustará automáticamente su ancho según el contenido */
     top: 0;
     left: 0;
     background-color: #d5d1defe;
@@ -829,25 +913,33 @@ tbody td.active {
 }
 /*responsive*/
 /* Estilos base para pantallas pequeñas */
-@media only screen and (min-width: 480px) and (max-width: 1080px) {
+@media only screen and (min-width: 380px) and (max-width: 1080px) {
     .table__header .input-group {
         width: 45%;
     }
- 
-    .table__body {
-        width: 95%;
-        max-height: calc(89% - 1.6rem);
-    }
- 
     .export__file .export__file-btn {
         display: inline-block;
         width: 2rem;
         height: 2rem;
     }
+    .table__body {
+        width: 97.9%;
+        max-height: calc(89% - 1.6rem);
+
+    }
+    table {
+        width: 100%;
+    }
+    main.table {
+        width: 70vw;
+        height: 80vh;
+
+    }
  }
  
+ 
  /* Estilos para pantallas medianas */
- @media only screen and (min-width: 768px) and (max-width: 1080px) {
+ @media only screen and (min-width: 600px) and (max-width: 1080px) {
     .table__header .input-group {
         width: 50%;
     }
@@ -856,6 +948,20 @@ tbody td.active {
         display: inline-block;
         width: 3rem;
         height: 3rem;
+    }
+    .table__body {
+        width: 97.9%;
+        max-height: calc(89% - 1.6rem);
+
+    }
+    
+    table {
+        width: 100%;
+    }
+    main.table {
+        width: 80vw;
+        height: 80vh;
+
     }
  }
  
@@ -870,14 +976,94 @@ tbody td.active {
         width: 4rem;
         height: 4rem;
     }
+    .table__body {
+        width: 95%;
+        max-height: calc(79% - 1.5rem);
+
+    }
+    table {
+        width: 100%;
+    }
+    main.table {
+        width: 70vw;
+        height: 80vh;
+
+    }
  }
  /*fin de todo el bloque de tabla players junto con
  la resposividad*/
+/*botones de ver informacion, editar y eliminar informacion*/
+/*ver informacion player*/
+#miBtnReade {
+    margin-top: 10.5px;
+    margin-left: 1.4%;
+    padding: .5rem 1rem;
+    background-color: #006b21;
+    color: #fff;
+    border: none;
+    border-radius: .4rem;
+    border-style: double;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
 
+}
+#miBtnReade:hover {
+    background-color: #006b21;
+    /* Cambia el color de fondo al pasar el ratón */
+    box-shadow: 0 3px 0 #19d856;
+   
+    transform: translateY(-2px);
+}
+/*editar informacion player*/
+#miBtnUpdate {
+    margin-top: 10.5px;
+    margin-left: 1.4%;
+    padding: .5rem 1rem;
+    background-color: #fa8601;
+    color: #fff;
+    border: none;
+    border-radius: .4rem;
+    border-style: double;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+
+}
+#miBtnUpdate:hover {
+    background-color: #fa8601;
+    /* Cambia el color de fondo al pasar el ratón */
+    box-shadow: 0 3px 0 #e6dba4;
+   
+    transform: translateY(-2px);
+}
+/*Eliminar informacion player*/
+#miBtnDelete {
+    margin-top: 10.5px;
+    margin-left: 1.4%;
+    padding: .5rem 1rem;
+    background-color: #ce2121;
+    color: #fff;
+    border: none;
+    border-radius: .4rem;
+    border-style: double;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+
+}
+#miBtnDelete:hover {
+    background-color: #ff0b0b;
+    /* Cambia el color de fondo al pasar el ratón */
+    box-shadow: 0 3px 0 #ce2121;
+   
+    transform: translateY(-2px);
+}
 /*--------------------------------------------*/
 /*MODAL formulario*/
 /*parte de modal agregado en el readeplayer*/
 /*----------------------------------------------*/
+/*playerModal create*/
 #playerModal {
     display: flex;
     align-items: center;
@@ -889,8 +1075,30 @@ tbody td.active {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);    
 }
-
-
+/*player modal update*/
+#playerModalUpda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);    
+}
+/*player modal delete*/
+#playerModalDelet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);    
+}
 .modalcontent {
     margin: auto;
     margin-top: 4.5%;
@@ -930,7 +1138,7 @@ tbody td.active {
     color: red;
     /* Cambia a rojo cuando se pasa el cursor */
 }
-
+/*crear*/
 #playerModal p {
     margin-top: 8px;
     text-align: center;
@@ -944,6 +1152,35 @@ tbody td.active {
     top: 0;
     justify-content: center;
 }
+/*upda*/
+#playerModalUpda p {
+    margin-top: 8px;
+    text-align: center;
+}
+
+#playerModalUpda label {
+    top: 0;
+    margin-top: 4.5px;
+}
+#playerModalUpda .modalcontent {
+    top: 0;
+    justify-content: center;
+}
+/*delet*/
+#playerModalDelet p {
+    margin-top: 8px;
+    text-align: center;
+}
+
+#playerModalDelet label {
+    top: 0;
+    margin-top: 4.5px;
+}
+#playerModalDelet .modalcontent {
+    top: 0;
+    justify-content: center;
+}
+
 /*seccio de responsividad*/
 /* Estilos base para pantallas pequeñas */
 @media only screen and (min-width: 480px) and (max-width: 1080px) {

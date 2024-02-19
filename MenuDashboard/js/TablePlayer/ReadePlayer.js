@@ -1,31 +1,40 @@
 /*para modal formulario*/
 /*-------------------------------------------------*/
 document.addEventListener("DOMContentLoaded", function () {
-  // Oculta el modal al cargar la página
+  // Oculta todos los modals al cargar la página
   document.getElementById("playerModal").style.display = "none";
+  document.getElementById("playerModalUpda").style.display = "none";
+  document.getElementById("playerModalDelet").style.display = "none";
 
   // Agrega un escuchador de eventos al botón "Crear Jugador"
   document.getElementById("miBoton").addEventListener("click", function () {
-    // Muestra el modal
+    // Muestra el modal de Crear Jugador
     document.getElementById("playerModal").style.display = "block";
   });
 
-  // Agrega un escuchador de eventos al botón de cerrar del modal
-  document.getElementById("closeModal").addEventListener("click", function () {
-    // Oculta el modal al hacer clic en el botón de cerrar
-    document.getElementById("playerModal").style.display = "none";
+  // Agrega un escuchador de eventos a todos los botones de cerrar modal
+  document.querySelectorAll(".close").forEach(function (button) {
+    button.addEventListener("click", function () {
+      // Oculta el modal al hacer clic en el botón de cerrar
+      // @ts-ignore
+      var modalId = button.dataset.modal;
+      document.getElementById(modalId).style.display = "none";
+    });
   });
 
   // Cierra el modal haciendo clic fuera del contenido
   window.onclick = function (event) {
-    // Verifica si se hizo clic en el área de fondo del modal
-    if (event.target.id === "playerModal") {
-      // Oculta el modal
-      document.getElementById("playerModal").style.display = "none";
+    // Verifica si se hizo clic en el área de fondo de algún modal
+    if (event.target.classList.contains("modal")) {
+      // Oculta todos los modals
+      document.querySelectorAll(".modal").forEach(function (modal) {
+        // @ts-ignore
+        modal.style.display = "none";
+      });
     }
   };
 });
-/*-------------------------------------------------*/
+/**********************************************************************************************************/
 // Obtener datos de la tabla este lo redirige al formulario
 fetch("http://localhost:1337/api/players")
   .then(res => {
@@ -49,9 +58,11 @@ fetch("http://localhost:1337/api/players")
           temp += `<td>${itemData.attributes.height}</td>`;
           temp += `<td>${itemData.attributes.gender}</td>`;
           temp += `<td>${itemData.attributes.position}</td>`;
-          temp += `<td><button onclick="editarItem(${itemData.id})">Editar</button></td>`;
-          temp += `<td><button onclick="eliminarItem(${itemData.id})">Eliminar</button></td>`;
+         /* temp += `<td><button id="miBtnReade" onclick="editarItem(${itemData.id})"><i class="bi bi-file-text-fill"></i></i></button></td>`;*/
+          temp += `<td><button id="miBtnUpdate" onclick="editarItem(${itemData.id})"><i class="bi bi-pencil-square"></i></button></td>`; //boton editar
+          temp += `<td><button id="miBtnDelete" onclick="eliminarItem(${itemData.id})"><i class="bi bi-trash3"></i></button></td>`;//boton eliminiar
           temp += `</tr>`;
+          
         } else {
           console.error("Campo(s) undefined en el siguiente objeto:", itemData);
         }
@@ -122,8 +133,8 @@ function editarItem(itemId) {
     // Muestra el formulario de edición
     mostrarFormularioEdicion(itemId);
   
-    // Redirige a la página de edición con el ID del jugador como parámetro
-    window.location.href = '/MenuDashboard/html/UpdatePlayer.html?id=' + itemId;
+   // Muestra el modal de edición
+  document.getElementById('playerModalUpda').style.display = 'block';
   }
   
 function eliminarItem(itemId) {
@@ -136,8 +147,8 @@ function eliminarItem(itemId) {
   if (confirmacion) {
     // Lógica para eliminar el item con el ID especificado
     console.log("Item eliminado con ID:", itemId);
-    // Redirige a la página de edición con el ID del jugador como parámetro
-    window.location.href = '/MenuDashboard/html/DeletePlayer.html?id=' + itemId;
+   // Muestra el modal de edición
+   document.getElementById('playerModalDelet').style.display = 'block';
   }
 }
 

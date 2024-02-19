@@ -1,4 +1,5 @@
-function submitForm() {
+
+function updatePlayer() {
     // @ts-ignore
     const playerId = document.getElementById("playerId").value; // Obtener el ID del jugador a modificar
     // @ts-ignore
@@ -44,3 +45,4 @@ function submitForm() {
     });
     showSuccessModal();
   }  
+  
