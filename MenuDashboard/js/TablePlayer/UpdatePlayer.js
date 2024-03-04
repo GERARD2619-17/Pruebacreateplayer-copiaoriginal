@@ -37,12 +37,10 @@ function updatePlayer() {
     .then(data => {
       console.log('Success:', data);
       showSuccessMessage();
-      // Redirige al usuario a una página ficticia de inicio.
       window.location.href = 'MenuDashboard/html/ReaderPlayer.html';
     })
     .catch((error) => {
       console.error('Error al enviar datos:', error);
     });
-    showSuccessModal();
   }  
   

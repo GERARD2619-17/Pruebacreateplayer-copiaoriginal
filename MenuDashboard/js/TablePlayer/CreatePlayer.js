@@ -56,9 +56,6 @@ function closeSuccessModal() {
   window.location.href = 'MenuDashboard/html/ReaderPlayer.html';
 }
 
-
-
 function showSuccessMessage() {
   throw new Error("Function not implemented.");
 }
-
