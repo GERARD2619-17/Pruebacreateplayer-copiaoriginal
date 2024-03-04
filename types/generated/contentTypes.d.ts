@@ -751,6 +751,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    rols: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::rol.rol'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -802,6 +807,42 @@ export interface ApiEmpleadoEmpleado extends Schema.CollectionType {
   };
 }
 
+export interface ApiPermisoPermiso extends Schema.CollectionType {
+  collectionName: 'permisos';
+  info: {
+    singularName: 'permiso';
+    pluralName: 'permisos';
+    displayName: 'permiso';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    permiso: Attribute.String;
+    rols: Attribute.Relation<
+      'api::permiso.permiso',
+      'manyToMany',
+      'api::rol.rol'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::permiso.permiso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::permiso.permiso',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPlayerPlayer extends Schema.CollectionType {
   collectionName: 'players';
   info: {
@@ -834,6 +875,38 @@ export interface ApiPlayerPlayer extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRolRol extends Schema.CollectionType {
+  collectionName: 'rols';
+  info: {
+    singularName: 'rol';
+    pluralName: 'rols';
+    displayName: 'rol';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rol: Attribute.String;
+    users_permissions_user: Attribute.Relation<
+      'api::rol.rol',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    permisos: Attribute.Relation<
+      'api::rol.rol',
+      'manyToMany',
+      'api::permiso.permiso'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::rol.rol', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::rol.rol', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -882,7 +955,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::empleado.empleado': ApiEmpleadoEmpleado;
+      'api::permiso.permiso': ApiPermisoPermiso;
       'api::player.player': ApiPlayerPlayer;
+      'api::rol.rol': ApiRolRol;
       'api::team.team': ApiTeamTeam;
     }
   }

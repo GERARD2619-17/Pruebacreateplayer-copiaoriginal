@@ -22,18 +22,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Cerrar el modal si se hace clic fuera de él
-  window.addEventListener("click", function(event) {
-    if (event.target == crearModal) {
-      crearModal.style.display = "none";
+  // Cierra el modal haciendo clic fuera del contenido
+  window.onclick = function (event) {
+    // Verifica si se hizo clic en el área de fondo de algún modal
+    if (event.target.classList.contains("modal")) {
+      // Oculta todos los modals
+      document.querySelectorAll(".modal").forEach(function (modal) {
+        // @ts-ignore
+        modal.style.display = "none";
+      });
     }
-    if (event.target == updateModal) {
-      updateModal.style.display = "none";
-    }
-    if (event.target == deleteModal) {
-      deleteModal.style.display = "none";
-    }
-  });
+  };
 });
 /**********************************************************************************************************/
 // Obtener datos de la tabla este lo redirige al formulario
@@ -128,15 +127,12 @@ function mostrarFormularioEdicion(itemId) {
 }//fin del bloque que se comento */
 
 function editarItem(itemId) {
-    // Lógica para editar el item con el ID especificado
-    console.log("Editar item con ID:", itemId);
-  
-    // Muestra el formulario de edición
-    mostrarFormularioEdicion(itemId);
-  
-   // Muestra el modal de edición
-  document.getElementById('playerModalUpda').style.display = 'block';
-  }
+  // Lógica para editar el item con el ID especificado
+  console.log("Editar item con ID:", itemId);
+
+  // Redirige a la página de actualización con el ID del jugador como parámetro
+  window.location.href = '/MenuDashboard/html/UpdatePlayer.html?id=' + itemId;
+}
   
 function eliminarItem(itemId) {
   // Lógica para eliminar el item con el ID especificado

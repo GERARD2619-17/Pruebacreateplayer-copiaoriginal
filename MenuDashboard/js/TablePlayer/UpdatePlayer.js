@@ -1,5 +1,4 @@
-
-function updatePlayer() {
+function submitForm() {
     // @ts-ignore
     const playerId = document.getElementById("playerId").value; // Obtener el ID del jugador a modificar
     // @ts-ignore
@@ -37,10 +36,11 @@ function updatePlayer() {
     .then(data => {
       console.log('Success:', data);
       showSuccessMessage();
+      // Redirige al usuario a una página ficticia de inicio.
       window.location.href = 'MenuDashboard/html/ReaderPlayer.html';
     })
     .catch((error) => {
       console.error('Error al enviar datos:', error);
     });
+    showSuccessModal();
   }  
-  

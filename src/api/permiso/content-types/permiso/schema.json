@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "permisos",
+  "info": {
+    "singularName": "permiso",
+    "pluralName": "permisos",
+    "displayName": "permiso",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "permiso": {
+      "type": "string"
+    },
+    "rols": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::rol.rol",
+      "inversedBy": "permisos"
+    }
+  }
+}

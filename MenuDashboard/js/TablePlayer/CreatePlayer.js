@@ -1,4 +1,5 @@
-function submitForm() {
+// Código para crear un jugador
+function submitFormCrea() {
   // @ts-ignore
   const name = document.getElementById("name").value;
   // @ts-ignore
@@ -23,10 +24,10 @@ function submitForm() {
     position }));
   playerData.append("files.image", image);
 
-  sendToStrapi(playerData);
+  sendCreationToStrapi(playerData);
 }
 
-function sendToStrapi(playerData) {
+function sendCreationToStrapi(playerData) {
   fetch('http://localhost:1337/api/players', {
     method: 'POST',
     body: playerData,
@@ -34,19 +35,20 @@ function sendToStrapi(playerData) {
   .then(response => response.json())
   .then(data => {
     console.log('Success:', data);
-    showSuccessMessage();
+    // @ts-ignore
+    showCreationSuccessMessage();
   })
   .catch((error) => {
     console.error('Error al enviar datos:', error);
   });
-  showSuccessModal();
+  showCreationSuccessModal();
 }
 
-function showSuccessModal() {
-  const modal = document.getElementById("successModal");
-  const successMessageElement = document.getElementById("successMessage");
+function showCreationSuccessModal() {
+  const modal = document.getElementById("createSuccessModal");
+  const successMessageElement = document.getElementById("createSuccessMessage");
 
-  successMessageElement.innerText = '¡Los datos se han enviado con éxito!';
+  successMessageElement.innerText = '¡El jugador se ha creado con éxito!';
   modal.style.display = "block";
 }
 
