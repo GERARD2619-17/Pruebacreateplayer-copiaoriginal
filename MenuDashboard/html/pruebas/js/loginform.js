@@ -51,9 +51,32 @@ document.addEventListener('DOMContentLoaded', () => {
             // Elimina el token de autenticación del localStorage
             localStorage.removeItem('token');
 
-            // Redirige al usuario a la página de inicio de sesión
-            window.location.href = '/MenuDashboard/html/pruebas/html/newlogin.html'; // Asegúrate de cambiar esta ruta a la página de inicio de sesión de tu sistema
-        });
-    }
-});
+    if (loggedIn) {
+        // Verificar el rol del usuario después de iniciar sesión
+        const userRole = await checkUserRole();
 
+        // Manejar el rol del usuario
+        switch (userRole) {
+            case 'Authenticated':
+                console.log('El usuario está autenticado.');
+                break;
+            case 'Admin':
+                console.log('El usuario es un administrador.');
+                break;
+            case 'Unauthenticated':
+                console.log('El usuario no está autenticado.');
+                break;
+            case 'Unauthorized':
+                console.log('El usuario no tiene permisos suficientes.');
+                break;
+            case 'Error':
+                console.log('Se produjo un error al verificar el rol del usuario.');
+                break;
+            default:
+                console.log('Rol desconocido.');
+                break;
+        }
+    } else {
+        console.log('Error al iniciar sesión');
+    }
+}
