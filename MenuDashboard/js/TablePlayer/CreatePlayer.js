@@ -1,5 +1,5 @@
 // Código para crear un jugador
-function submitFormCrea() {
+function submitFormCreate() {
   // @ts-ignore
   const name = document.getElementById("name").value;
   // @ts-ignore

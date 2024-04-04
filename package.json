@@ -10,9 +10,9 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.16.2",
-    "@strapi/plugin-users-permissions": "4.16.2",
-    "@strapi/strapi": "4.16.2",
+    "@strapi/plugin-i18n": "4.20.2",
+    "@strapi/plugin-users-permissions": "4.20.2",
+    "@strapi/strapi": "4.20.2",
     "autoprefixer": "^10.4.16",
     "axios": "^1.6.2",
     "mysql": "2.18.1",
